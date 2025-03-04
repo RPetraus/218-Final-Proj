@@ -9,10 +9,12 @@
 
 //=====[Declarations (prototypes) of public functions]=========================
 
-void sirenInit();
-bool sirenStateRead();
-void sirenStateWrite( bool state );
-void sirenUpdate();
+void sirensInit();
+bool internalSirenStateRead();
+bool externalSirenStateRead();
+void internalSirenStateWrite( bool state );
+void externalSirenStateWrite( bool state );
+void sirensUpdate();
 
 //=====[#include guards - end]=================================================
 

@@ -1,12 +1,16 @@
 //=====[Libraries]=============================================================
 
 #include "arm_book_lib.h"
-#include "mbed.h"
 
-#include "ignition_subsystem.h"
-#include "smart_car_system.h"
-#include "windshield_wiper_subsystem.h"
+#include "parking_system.h"
 
+
+
+
+
+
+
+#include "code.h"
 
 //=====[Declaration of private defines]========================================
 
@@ -27,20 +31,21 @@
 /**
 * Initializes the smart car system by initializing the subsystems
 */
-void smartCarSystemInit()
+void parkingSystemInit()
 {
-    ignitionSubsystemInit();
-    windshieldWiperInit();
+    resetCode();
 }
 
 
 /**
 * Updates the smart car system by updating its subsystems
 */
-void smartCarSystemUpdate()
+void parkingSystemUpdate()
 {
-    ignitionSubsystemUpdate();
-    windshieldWiperUpdate();
+
+    
+    
+    
     delay(TIME_INCREMENT_MS);
 }
 

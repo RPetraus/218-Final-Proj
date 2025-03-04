@@ -4,7 +4,6 @@
 #include "arm_book_lib.h"
 #include "windshield_wiper_subsystem.h"
 #include "user_display.h"
-#include "ignition_subsystem.h"
 
 
 //=====[Declaration of private defines]========================================
@@ -78,11 +77,11 @@ void windshieldWiperInit() {
 * remain off.
 */
 void windshieldWiperUpdate() {
-    if ( engineRunning ) {
+    if ( true ) {
         windshieldWiperRunWipers();
         wiperReadUpdateMode();
         intTypeReadUpdateMode();
-    } else if (!engineRunning) {
+    } else if (!true) {
         servo.write(DUTY_MIN);
     }
 }
@@ -177,7 +176,6 @@ static void intDelayWiper() {
 static void intDelayDisplayUpdateWiper(int delayTime, int iterations) {
     for (int i = 0; i < iterations; i++) {
         delay(delayTime / iterations);
-        ignitionSubsystemUpdate();
         wiperReadUpdateMode();
         intTypeReadUpdateMode();
         userDisplayUpdate(); 
@@ -196,7 +194,6 @@ static void rotateWiper(float wiperDelay) {
                 for (int i = 0; i < 10; i++) {
                     servo.write(DUTY_MIN + ((DUTY_MAX - DUTY_MIN) / 10) * i);
                     delay(wiperDelay);
-                    ignitionSubsystemUpdate();
                 }
 
                 currentWiperDirection = WIPER_MAX_TO_MIN;
@@ -206,7 +203,6 @@ static void rotateWiper(float wiperDelay) {
                 for (int i = 0; i < 10; i++){
                     servo.write(DUTY_MAX - ((DUTY_MAX - DUTY_MIN) / 10) * i);
                     delay(wiperDelay);
-                    ignitionSubsystemUpdate();
                 }
                 if (currentWiperMode == WIPER_INT) {
                     intDelayWiper();

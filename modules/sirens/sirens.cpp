@@ -3,9 +3,7 @@
 #include "mbed.h"
 #include "arm_book_lib.h"
 
-#include "siren.h"
-
-#include "smart_car_system.h"
+#include "sirens.h"
 
 //=====[Declaration of private defines]========================================
 
@@ -13,7 +11,8 @@
 
 //=====[Declaration and initialization of public global objects]===============
 
-DigitalOut sirenPin(PE_10);
+DigitalOut internalSirenPin(PE_10);
+DigitalOut externalSirenPin(PE_12);
 
 //=====[Declaration of external public global variables]=======================
 
@@ -21,7 +20,8 @@ DigitalOut sirenPin(PE_10);
 
 //=====[Declaration and initialization of private global variables]============
 
-static bool sirenState = OFF;
+static bool internalSirenState = OFF;
+static bool externalSirenState = OFF;
 
 //=====[Declarations (prototypes) of private functions]========================
 
@@ -30,39 +30,45 @@ static bool sirenState = OFF;
 /**
 * Initializes the siren to not output
 */
-void sirenInit()
+void sirensInit()
 {
-    sirenPin = ON;
+    internalSirenPin = ON;
+    externalSirenPin = ON;
 }
  
 
-/**
-* Reads the current state of the siren
-* Returns the current state of the siren
-*/
-bool sirenStateRead()
+bool internalSirenStateRead()
 {
-    return sirenState;
+    return internalSirenState;
+}
+
+bool externalSirenStateRead()
+{
+    return externalSirenState;
+}
+
+void internalSirenStateWrite( bool state )
+{
+    internalSirenState = state;
+}
+
+void externalSirenStateWrite( bool state )
+{
+    externalSirenState = state;
 }
 
 
-/**
-* Sets the state of the siren 
-* Parameter: The desired state of the siren
-*/
-void sirenStateWrite( bool state )
-{
-    sirenState = state;
-}
-
-/**
-* Updates the siren's output based on its state.
-*/
-void sirenUpdate() {
-    if ( sirenState == ON ) {
-        sirenPin = ON;
+void sirensUpdate() {
+    if ( internalSirenState ) {
+        internalSirenPin = OFF;
     } else {
-        sirenPin = OFF;
+        internalSirenPin = ON;
+    }
+    
+    if ( externalSirenState ) {
+        externalSirenPin = OFF;
+    } else {
+        externalSirenPin = ON;
     }
 }
 

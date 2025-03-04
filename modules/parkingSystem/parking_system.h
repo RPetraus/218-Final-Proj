@@ -1,20 +1,19 @@
 //=====[#include guards - begin]===============================================
 
-#ifndef _IGNITION_SUBSYSTEM_H_
-#define _IGNITION_SUBSYSTEM_H_
+#ifndef _PARKING_SYSTEM_H_
+#define _PARKING_SYSTEM_H_
+
+#define TIME_INCREMENT_MS 10
 
 //=====[Declaration of public defines]=========================================
 
 //=====[Declaration of public data types]======================================
 
-extern bool engineRunning;
-
 //=====[Declarations (prototypes) of public functions]=========================
 
-void ignitionSubsystemInit();
-bool ignitionSubsystemUpdate();
-
+void parkingSystemInit();
+void parkingSystemUpdate();
 
 //=====[#include guards - end]=================================================
 
-#endif // _IGNITION_SUBSYSTEM_H_
+#endif // _PARKING_SYSTEM_H_

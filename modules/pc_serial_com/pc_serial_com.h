@@ -12,6 +12,7 @@
 
 void pcSerialComInit();
 void pcSerialComStringWrite( const char* str );
+void pcSerialComCharRead( char *receivedChar );
 
 //=====[#include guards - end]=================================================
 

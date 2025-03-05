@@ -1,7 +1,7 @@
 //=====[#include guards - begin]===============================================
 
-#ifndef _SIRENS_H_
-#define _SIRENS_H_
+#ifndef _MOVE_GATE_H_
+#define _MOVE_GATE_H_
 
 //=====[Declaration of public defines]=========================================
 
@@ -9,13 +9,10 @@
 
 //=====[Declarations (prototypes) of public functions]=========================
 
-void sirensInit();
-bool internalSirenStateRead();
-bool externalSirenStateRead();
-void internalSirenStateWrite( bool state );
-void externalSirenStateWrite( bool state );
-void sirensUpdate();
+void moveGateInit();
+void openGate();
+void closeGate();
 
 //=====[#include guards - end]=================================================
 
-#endif // _SIREN_H_
+#endif // _MOVE_GATE_H_

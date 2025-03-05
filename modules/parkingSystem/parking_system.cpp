@@ -10,6 +10,9 @@
 
 
 
+#include "user_display.h"
+
+#include "sirens.h"
 #include "code.h"
 
 //=====[Declaration of private defines]========================================
@@ -33,7 +36,9 @@
 */
 void parkingSystemInit()
 {
-    resetCode();
+    sirensInit();
+
+    userDisplayInit();
 }
 
 
@@ -42,8 +47,6 @@ void parkingSystemInit()
 */
 void parkingSystemUpdate()
 {
-
-    
     
     
     delay(TIME_INCREMENT_MS);

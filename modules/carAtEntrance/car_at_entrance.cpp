@@ -1,3 +1,4 @@
+/*
 #include "mbed.h"
 #include "arm_book_lib.h"
 #define NIGHT_LEVEL 40   // Car Detected
@@ -80,3 +81,4 @@ void testLDR()
         ThisThread::sleep_for(500ms);
     }
 }
+*/
